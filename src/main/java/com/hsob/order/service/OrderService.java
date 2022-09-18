@@ -58,7 +58,7 @@ public class OrderService {
             logger.log(Level.INFO, "Get order for id: {$id} start.");
             // order = orderRepository.getOrderByItemId(id);
             QOrder order = QOrder.order;
-            JPAQuery<Payment> query = new JPAQuery<>(entityManager);
+            JPAQuery<Order> query = new JPAQuery<>(entityManager);
             result = query.select(order)
                     .from(order)
                     .where(order.id.eq(id))
