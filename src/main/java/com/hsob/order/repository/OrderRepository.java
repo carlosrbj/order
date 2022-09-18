@@ -5,9 +5,10 @@ import com.hsob.documentdb.order.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface OrderRepository extends JpaRepository <Order, Long>, QuerydslPredicateExecutor<Order> {
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query("update Order p set p.status = :status where p = :order")
